@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js 柱狀圖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-[#272727] flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-2xl p-5">
+        <h2 class="text-center text-white font-bold text-2xl mb-5">銷售數據</h2>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // 獲取 Canvas
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // 建立柱狀圖
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['一月', '二月', '三月', '四月', '五月', '六月'],
+                datasets: [{
+                    label: '銷售額 (千元)',
+                    data: [12, 19, 8, 17, 23, 15],
+                    backgroundColor: '#4F46E5', // 深藍色
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#ffffff', // X 軸文字顏色
+                            font: { weight: 'bold' }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#ffffff', // Y 軸文字顏色
+                            font: { weight: 'bold' }
+                        },
+                        grid: { color: 'rgba(255, 255, 255, 0.2)' } // 虛線
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff', // 圖例文字顏色
+                            font: { weight: 'bold' }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
